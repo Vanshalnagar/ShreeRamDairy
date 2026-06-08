@@ -16,7 +16,6 @@ const initialState = {
 
 // Axios base setup
 axios.defaults.baseURL = import.meta.env.VITE_API_URL || '';
-axios.defaults.withCredentials = true;
 
 export const registerUser = createAsyncThunk('auth/register', async (userData, { rejectWithValue }) => {
   try {
