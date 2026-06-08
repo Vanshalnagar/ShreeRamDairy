@@ -37,11 +37,11 @@ const Header = () => {
   const shopAllCategories = [
     { name: 'Sweets', path: '/products?category=traditional-sweets' },
     { name: 'Namkeen', path: '/products?category=farsan' },
-    { name: 'Desi Ghee', path: '/products?category=dairy-products' },
     { name: 'Cakes', path: '/products?category=fancy-mawa-sweets' },
     { name: 'Fafda Jalebi', path: '/products?category=farsan' },
     { name: 'Dry Fruits', path: '/products?category=kaju-special' },
     { name: 'Syrup', path: '/products?category=halwa' },
+    { name: 'Dairy Products', path: '/products?category=dairy-products' },
   ];
 
   return (
