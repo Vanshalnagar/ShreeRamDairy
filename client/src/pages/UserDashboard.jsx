@@ -110,8 +110,8 @@ const UserDashboard = () => {
     }
   };
 
-  const handleRemoveWishlist = (productId) => {
-    dispatch(toggleWishlist({ productId, inWishlist: true }));
+  const handleRemoveWishlist = (product) => {
+    dispatch(toggleWishlist({ product, inWishlist: true }));
   };
 
   return (
@@ -510,7 +510,7 @@ const UserDashboard = () => {
                         </div>
 
                         <button
-                          onClick={() => handleRemoveWishlist(item._id)}
+                          onClick={() => handleRemoveWishlist(item)}
                           className="text-gray-400 hover:text-red-500 p-1 shrink-0"
                           title="Remove from wishlist"
                         >

@@ -122,14 +122,15 @@ export const fetchWishlist = createAsyncThunk('auth/fetchWishlist', async (_, { 
   }
 });
 
-export const toggleWishlist = createAsyncThunk('auth/toggleWishlist', async ({ productId, inWishlist }, { rejectWithValue }) => {
+export const toggleWishlist = createAsyncThunk('auth/toggleWishlist', async ({ product, inWishlist }, { rejectWithValue }) => {
+  const productId = product._id;
   try {
     if (inWishlist) {
       await axios.delete(`/api/users/wishlist/${productId}`);
     } else {
       await axios.post(`/api/users/wishlist/${productId}`);
     }
-    return { productId, inWishlist: !inWishlist };
+    return { product, inWishlist: !inWishlist };
   } catch (error) {
     return rejectWithValue(error.response?.data?.error || 'Wishlist operation failed');
   }
@@ -170,9 +171,14 @@ const authSlice = createSlice({
       // Wishlist
       .addCase(fetchWishlist.fulfilled, (state, action) => { state.wishlist = action.payload; })
       .addCase(toggleWishlist.fulfilled, (state, action) => {
-        const { productId, inWishlist } = action.payload;
+        const { product, inWishlist } = action.payload;
         if (!inWishlist) {
-          state.wishlist = state.wishlist.filter(item => item._id !== productId);
+          state.wishlist = state.wishlist.filter(item => item._id !== product._id);
+        } else {
+          const exists = state.wishlist.some(item => item._id === product._id);
+          if (!exists) {
+            state.wishlist.push(product);
+          }
         }
       });
   }

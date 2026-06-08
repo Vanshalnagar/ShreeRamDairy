@@ -20,15 +20,16 @@ const ProductCard = ({ product }) => {
       alert('Please login to save items to your wishlist!');
       return;
     }
-    dispatch(toggleWishlist({ productId: product._id, inWishlist }));
+    dispatch(toggleWishlist({ product, inWishlist }));
   };
 
   const handleAddToCart = (e) => {
     e.preventDefault();
+    const finalPrice = getWeightPrice(product.price, selectedWeight);
     dispatch(addToCart({
       product: product._id,
       name: product.name,
-      price: product.price,
+      price: finalPrice,
       image: product.image,
       quantity: 1,
       weight: selectedWeight
