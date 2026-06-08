@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  /* Wave divider helper */
+  .wave-divider {
+    position: relative;
+    height: 30px;
+    background: #FFF8EC;
+    overflow: hidden;
+  }
+  
+  .wave-divider::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 15px;
+    background-image: radial-gradient(circle at 10px -7px, transparent 8px, #FFF8EC 9px);
+    background-size: 20px 20px;
+  }
+
+  /* Traditional arch product card shape */
+  .arch-card-img {
+    border-radius: 50% 50% 0 0;
+    border: 3px solid #C9A227;
+  }
+  
+  /* Gold frame blog card shape (concave bracket corner borders) */
+  .gold-bracket-frame {
+    position: relative;
+    border: 2px solid #C9A227;
+    border-radius: 12px;
+  }
+
+  /* Scalloped White Edge Divider for Hero Bottom */
+  .scalloped-edge {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 16px;
+    background: transparent;
+    z-index: 10;
+  }
+  
+  .scalloped-edge::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    height: 16px;
+    background-image: radial-gradient(circle at 10px 16px, #ffffff 10px, transparent 11px);
+    background-size: 20px 20px;
+    background-repeat: repeat-x;
+  }
+
+  /* Hand-drawn Purple/Indigo Doodle pattern overlay for Hero */
+  .doodle-pattern-overlay {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='none' stroke='%234B0082' stroke-opacity='0.12' stroke-width='1.5'%3E%3Ccircle cx='30' cy='30' r='10'/%3E%3Ccircle cx='110' cy='110' r='6' fill='%234B0082' fill-opacity='0.08'/%3E%3Cpath d='M90,30 Q110,10 130,30 T150,30'/%3E%3Cpath d='M20,100 C40,90 40,120 20,130 Z'/%3E%3Cpath d='M140,80 L150,90 L140,100 L130,90 Z'/%3E%3Ccircle cx='75' cy='65' r='12'/%3E%3Cpath d='M50,140 Q80,120 110,140'/%3E%3Ccircle cx='15' cy='15' r='2' fill='%234B0082'/%3E%3Ccircle cx='145' cy='15' r='2' fill='%234B0082'/%3E%3Ccircle cx='80' cy='150' r='2' fill='%234B0082'/%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  /* Small cross/diamond tile motif in slightly darker pink on blush background */
+  .diamond-tile-pattern {
+    background-color: #F5C5B0;
+    background-image: 
+      radial-gradient(#e0a38c 22%, transparent 22%),
+      radial-gradient(#e0a38c 22%, transparent 22%);
+    background-size: 24px 24px;
+    background-position: 0 0, 12px 12px;
+  }
+
+  /* Falling marigold petals */
+  @keyframes fall-petal {
+    0% {
+      transform: translateY(-50px) translateX(0) rotate(0deg);
+      opacity: 0;
+    }
+    15% {
+      opacity: 0.75;
+    }
+    85% {
+      opacity: 0.75;
+    }
+    100% {
+      transform: translateY(650px) translateX(80px) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  .animate-petal-1 {
+    animation: fall-petal 9s linear infinite;
+  }
+  .animate-petal-2 {
+    animation: fall-petal 13s linear infinite 1.5s;
+  }
+  .animate-petal-3 {
+    animation: fall-petal 16s linear infinite 4s;
+  }
+  .animate-petal-4 {
+    animation: fall-petal 11s linear infinite 0.5s;
+  }
+  .animate-petal-5 {
+    animation: fall-petal 14s linear infinite 2.5s;
+  }
+
+  /* Seamless golden mandala luxury background pattern */
+  .luxury-gold-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%23C9A227' stroke-opacity='0.05' stroke-width='1'%3E%3Ccircle cx='60' cy='60' r='30'/%3E%3Ccircle cx='60' cy='60' r='15'/%3E%3Ccircle cx='60' cy='60' r='5'/%3E%3Cpath d='M60,0 L60,120 M0,60 L120,60'/%3E%3Cpath d='M17.57,17.57 L102.43,102.43 M17.57,102.43 L102.43,17.57'/%3E%3Ccircle cx='0' cy='0' r='10'/%3E%3Ccircle cx='120' cy='0' r='10'/%3E%3Ccircle cx='0' cy='120' r='10'/%3E%3Ccircle cx='120' cy='120' r='10'/%3E%3Ccircle cx='60' cy='60' r='45' stroke-dasharray='3,3'/%3E%3Cpath d='M60,15 C63,25 57,25 60,15 Z'/%3E%3Cpath d='M60,105 C63,95 57,95 60,105 Z'/%3E%3Cpath d='M15,60 C25,63 25,57 15,60 Z'/%3E%3Cpath d='M105,60 C95,63 95,57 105,60 Z'/%3E%3Cpath d='M28.28,28.28 C35.35,35.35 42.42,28.28 28.28,28.28 Z'/%3E%3Cpath d='M91.72,91.72 C84.65,84.65 77.58,91.72 91.72,91.72 Z'/%3E%3Cpath d='M28.28,91.72 C35.35,84.65 42.42,91.72 28.28,91.72 Z'/%3E%3Cpath d='M91.72,28.28 C84.65,35.35 77.58,28.28 91.72,28.28 Z'/%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  /* Hanging marigold flower garland border */
+  .marigold-garland {
+    height: 24px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='24' viewBox='0 0 80 24'%3E%3Cg fill='none' stroke-linecap='round'%3E%3Cpath d='M0,4 Q20,16 40,4 T80,4' stroke='%2322c55e' stroke-width='2'/%3E%3Ccircle cx='20' cy='9' r='6' fill='%23f97316'/%3E%3Ccircle cx='20' cy='9' r='4' fill='%23eab308'/%3E%3Ccircle cx='40' cy='4' r='6' fill='%23eab308'/%3E%3Ccircle cx='40' cy='4' r='4' fill='%23f97316'/%3E%3Ccircle cx='60' cy='9' r='6' fill='%23f97316'/%3E%3Ccircle cx='60' cy='9' r='4' fill='%23eab308'/%3E%3Ccircle cx='0' cy='4' r='5' fill='%23eab308'/%3E%3Ccircle cx='80' cy='4' r='5' fill='%23eab308'/%3E%3Cpath d='M14,10 L12,14 M26,10 L28,14 M54,10 L52,14 M66,10 L68,14' stroke='%2315803d' stroke-width='1.5'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    width: 100%;
+  }
+}

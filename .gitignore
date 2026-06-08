@@ -1,0 +1,21 @@
+# Dependencies
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Environment variables — NEVER commit these
+.env
+client/.env
+server/.env
+# .env.production is intentionally committed (contains only public VITE_ vars)
+
+# Production build
+client/dist/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
