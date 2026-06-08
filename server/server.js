@@ -52,6 +52,7 @@ app.use('/api', limiter);
 const allowedOrigins = [
   'http://localhost:5173',
   'https://shreeramdairy.onrender.com',
+  'https://shreeramdairy.netlify.app',
   process.env.CORS_ORIGIN,
   process.env.FRONTEND_URL
 ].filter(Boolean);
