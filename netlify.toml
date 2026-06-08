@@ -11,6 +11,7 @@
   to = "https://shreeramdairy.onrender.com/api/:splat"
   status = 200
   force = true
+  headers = {X-Forwarded-Host = ":host", X-Forwarded-Proto = "https"}
 
 [[redirects]]
   from = "/*"
