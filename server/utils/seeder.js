@@ -233,7 +233,7 @@ const seedDB = async () => {
     
     // Create user account
     await User.create({
-      name: 'Vanshal Sharma',
+      name: 'Prajin Raj Ranawat',
       email: 'user@shreeramdairy.com',
       phone: '9876543210',
       password: 'userpassword123',
@@ -241,7 +241,7 @@ const seedDB = async () => {
       addresses: [
         {
           title: 'Home',
-          receiverName: 'Vanshal Sharma',
+          receiverName: 'Prajin Raj Ranawat',
           receiverPhone: '9876543210',
           addressLine: '42, Ghalib Circle, Connaught Place',
           city: 'New Delhi',
