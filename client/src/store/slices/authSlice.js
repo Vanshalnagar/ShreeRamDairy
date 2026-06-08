@@ -23,6 +23,7 @@ export const registerUser = createAsyncThunk('auth/register', async (userData, {
     const response = await axios.post('/api/auth/register', userData);
     localStorage.setItem('srd_token', response.data.accessToken);
     localStorage.setItem('srd_user', JSON.stringify(response.data.user));
+    axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.accessToken}`;
     return response.data;
   } catch (error) {
     return rejectWithValue(error.response?.data?.error || 'Registration failed');
@@ -34,6 +35,7 @@ export const loginUser = createAsyncThunk('auth/login', async (userData, { rejec
     const response = await axios.post('/api/auth/login', userData);
     localStorage.setItem('srd_token', response.data.accessToken);
     localStorage.setItem('srd_user', JSON.stringify(response.data.user));
+    axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.accessToken}`;
     return response.data;
   } catch (error) {
     return rejectWithValue(error.response?.data?.error || 'Login failed');
@@ -45,6 +47,7 @@ export const googleLoginUser = createAsyncThunk('auth/google', async (credential
     const response = await axios.post('/api/auth/google', { credential });
     localStorage.setItem('srd_token', response.data.accessToken);
     localStorage.setItem('srd_user', JSON.stringify(response.data.user));
+    axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.accessToken}`;
     return response.data;
   } catch (error) {
     return rejectWithValue(error.response?.data?.error || 'Google login failed');
@@ -56,6 +59,7 @@ export const logoutUser = createAsyncThunk('auth/logout', async (_, { rejectWith
     await axios.post('/api/auth/logout');
     localStorage.removeItem('srd_token');
     localStorage.removeItem('srd_user');
+    delete axios.defaults.headers.common['Authorization'];
     return null;
   } catch (error) {
     return rejectWithValue(error.response?.data?.error || 'Logout failed');
