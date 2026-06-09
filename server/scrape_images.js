@@ -90,29 +90,23 @@ async function startScraping() {
         continue;
       }
 
-      // Check if current image is a default seeder unsplash placeholder
-      const isUnsplashPlaceholder = product.image && (
-        product.image.includes('photo-1550583724-b2692b85b150') ||
-        product.image.includes('photo-1563636619-e9143da7973b') ||
-        product.image.includes('photo-1626132647523-66f5bf380027') ||
-        product.image.includes('photo-1589119908995-c6837fa14848') ||
-        product.image.includes('photo-1601004890684-d8cbf643f5f2') ||
-        product.image.includes('photo-1488477181946-6428a0291777') ||
-        product.image.includes('photo-1563729784474-d77dbb933a9e') ||
-        product.image.includes('photo-1601050690597-df056fb4ce78') ||
-        product.image.includes('photo-1505253716362-afaea1d3d1af')
-      );
-
-      if (!isUnsplashPlaceholder && product.image && !product.image.includes('unsplash.com')) {
-        console.log(`[SKIPPED] "${product.name}" already has customized image: ${product.image}`);
-        continue;
-      }
-
       // Build search query based on category
       let searchQuery = '';
       const catLower = categoryName.toLowerCase();
+      const negativeKeywords = " -brand -package -box -packet -wrapper -label -amul -haldiram -bikano -balaji -nestle -britannia -motherdairy -gowardhan -patanjali -organicindia -vadilal -havmor -bikanervala -ghasitaram -chhappanbhog -packet -carton -bag -plastic -container -commercial";
+      
       if (catLower.includes('dairy')) {
-        searchQuery = `Indian dairy ${product.name}`;
+        if (product.name.toLowerCase() === 'paneer') {
+          searchQuery = `fresh raw paneer cubes block close up`;
+        } else if (product.name.toLowerCase() === 'cheese') {
+          searchQuery = `cheddar cheese block close up fresh`;
+        } else if (product.name.toLowerCase().includes('ghee')) {
+          searchQuery = `pure desi ghee clarified butter in glass jar bowl`;
+        } else if (product.name.toLowerCase() === 'mawa' || product.name.toLowerCase().includes('mawa')) {
+          searchQuery = `fresh unsweetened khoya mawa milk solids`;
+        } else {
+          searchQuery = `fresh raw ${product.name} close up`;
+        }
       } else if (
         catLower.includes('sweet') || 
         catLower.includes('peda') || 
@@ -122,7 +116,7 @@ async function startScraping() {
         catLower.includes('shrikhand') || 
         catLower.includes('special')
       ) {
-        searchQuery = `Indian sweet ${product.name} mithai`;
+        searchQuery = `Indian sweet ${product.name} mithai on plate close up`;
       } else if (
         catLower.includes('sev') || 
         catLower.includes('chevdo') || 
@@ -131,10 +125,12 @@ async function startScraping() {
         catLower.includes('gathiya') || 
         catLower.includes('chavanu')
       ) {
-        searchQuery = `Indian snack ${product.name} namkeen`;
+        searchQuery = `Indian snack ${product.name} namkeen in bowl close up`;
       } else {
-        searchQuery = `Indian food ${product.name}`;
+        searchQuery = `Indian food ${product.name} close up`;
       }
+
+      searchQuery += negativeKeywords;
 
       console.log(`[${i + 1}/${products.length}] Scraping for "${product.name}" (Query: "${searchQuery}")...`);
       

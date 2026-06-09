@@ -8,7 +8,6 @@ const User = require('../models/User');
 dotenv.config();
 
 const categories = [
-  { name: 'Dairy Products', slug: 'dairy-products', description: 'Fresh and pure farm-fresh dairy items made daily.', image: 'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=600&auto=format&fit=crop&q=80' },
   { name: 'Halwa', slug: 'halwa', description: 'Rich and traditional hot sweet puddings.', image: 'https://images.unsplash.com/photo-1505253716362-afaea1d3d1af?w=600&auto=format&fit=crop&q=80' },
   { name: 'Peda', slug: 'peda', description: 'Traditional round milk fudge pedas.', image: 'https://images.unsplash.com/photo-1626132647523-66f5bf380027?w=600&auto=format&fit=crop&q=80' },
   { name: 'Fancy Mawa Sweets', slug: 'fancy-mawa-sweets', description: 'Artisanal decorative mawa configurations.', image: 'https://images.unsplash.com/photo-1589119908995-c6837fa14848?w=600&auto=format&fit=crop&q=80' },
@@ -23,14 +22,12 @@ const categories = [
   { name: 'Kachori', slug: 'kachori', description: 'Crisp deep-fried pastry loaded with lentils or potatoes.', image: 'https://images.unsplash.com/photo-1601050690597-df056fb4ce78?w=600&auto=format&fit=crop&q=80' },
   { name: 'Farsan', slug: 'farsan', description: 'Traditional Gujarati fried snacks.', image: 'https://images.unsplash.com/photo-1601050690597-df056fb4ce78?w=600&auto=format&fit=crop&q=80' },
   { name: 'Gathiya', slug: 'gathiya', description: 'Soft chickpea snacks, a staple Gujarati breakfast item.', image: 'https://images.unsplash.com/photo-1601050690597-df056fb4ce78?w=600&auto=format&fit=crop&q=80' },
-  { name: 'Chavanu', slug: 'chavanu', description: 'Popular crispy roasted lentil and nut mix.', image: 'https://images.unsplash.com/photo-1601050690597-df056fb4ce78?w=600&auto=format&fit=crop&q=80' }
+  { name: 'Chavanu', slug: 'chavanu', description: 'Popular crispy roasted lentil and nut mix.', image: 'https://images.unsplash.com/photo-1601050690597-df056fb4ce78?w=600&auto=format&fit=crop&q=80' },
+  { name: 'Dairy Products', slug: 'dairy-products', description: 'Fresh and pure farm-fresh dairy items made daily.', image: 'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=600&auto=format&fit=crop&q=80' }
 ];
 
 const productsData = [
   // DAIRY PRODUCTS
-  { name: "Toned Milk", gujaratiName: "ટોન્ડ દૂધ", category: "Dairy Products", price: 42, unit: "1L", desc: "Fresh homogenized toned milk containing 3.0% fat.", ingredients: "Pasteurized Milk", image: "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=500" },
-  { name: "Full Cream Milk", gujaratiName: "ફુલ ક્રીમ દૂધ", category: "Dairy Products", price: 50, unit: "1L", desc: "Rich and creamy high-fat milk, perfect for making curd and tea.", ingredients: "Pasteurized Cream Milk", image: "https://images.unsplash.com/photo-1563636619-e9143da7973b?w=500" },
-  { name: "Buffalo Milk", gujaratiName: "ભેંસનું દૂધ", category: "Dairy Products", price: 58, unit: "1L", desc: "Thick and pure fresh buffalo milk, rich in nutrients.", ingredients: "Fresh Buffalo Milk", image: "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=500" },
   { name: "Paneer", gujaratiName: "પનીર", category: "Dairy Products", price: 350, unit: "1kg", desc: "Soft and fresh cottage cheese made from pure buffalo milk.", ingredients: "Milk Coagulum", image: "https://images.unsplash.com/photo-1601050690597-df056fb4ce78?w=500" },
   { name: "Cheese", gujaratiName: "ચીઝ", category: "Dairy Products", price: 300, unit: "1kg", desc: "Processed cheddar cheese blocks, highly nutritious.", ingredients: "Milk, Cheese Culture", image: "https://images.unsplash.com/photo-1486299267070-8382e214434b?w=500" },
   { name: "Mawa", gujaratiName: "માવો (ખોયા)", category: "Dairy Products", price: 300, unit: "1kg", desc: "Fresh condensed milk solids, ideal for sweet preparations.", ingredients: "Condensed Milk Solids", image: "https://images.unsplash.com/photo-1589119908995-c6837fa14848?w=500" },
